@@ -1,0 +1,10 @@
+[{
+    "username": "locnpv",
+    "subjects": ["IT", "Marketing", "Math"]
+}, {
+    "username": "tester",
+    "subjects": ["IT"]
+}, {
+    "username": "developer",
+    "subjects": ["IT", "Math", "Soft skill"]
+}]
