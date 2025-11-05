@@ -1,40 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <title>Đăng ký ngành học</title>
-</head>
-<body>
-  <h2>Form đăng ký ngành học</h2>
-  <form method="GET" action="http://localhost:3000/register/cntt">
-    <label for="full_name">Họ và tên:</label><br>
-    <input type="text" id="full_name" name="full_name" required><br><br>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Đăng ký ngành học</title>
+  </head>
+  <body>
+    <h2>Form đăng ký ngành học</h2>
+    <form method="GET" action="http://localhost:3000/register/cntt">
+      <label for="full_name">Họ và tên:</label><br />
+      <input type="text" id="full_name" name="full_name" required /><br /><br />
 
-    <label for="grade">Điểm thi (Grade):</label><br>
-    <input type="number" id="grade" name="grade" min="0" max="30" required><br><br>
+      <label for="grade">Điểm thi (Grade):</label><br />
+      <input
+        type="number"
+        id="grade"
+        name="grade"
+        min="0"
+        max="30"
+        required
+      /><br /><br />
 
-    <label for="age">Tuổi:</label><br>
-    <input type="number" id="age" name="age" min="1" required><br><br>
+      <label for="age">Tuổi:</label><br />
+      <input type="number" id="age" name="age" min="1" required /><br /><br />
 
-    <label for="subject">Ngành đăng ký:</label><br>
-    <select id="subject" name="subject" required>
-      <option value="cntt">Công nghệ thông tin</option>
-      <option value="marketing">Marketing</option>
-      <option value="math">Toán học</option>
-    </select><br><br>
+      <label for="subject">Ngành đăng ký:</label><br />
+      <select id="subject" name="subject" required>
+        <option value="cntt">Công nghệ thông tin</option>
+        <option value="marketing">Marketing</option>
+        <option value="math">Toán học</option></select
+      ><br /><br />
 
-    <input type="submit" value="Đăng ký">
-  </form>
+      <input type="submit" value="Đăng ký" />
+    </form>
 
-  <script>
-    // Tự động cập nhật action URL theo ngành học đã chọn
-    const form = document.querySelector("form");
-    const subjectSelect = document.getElementById("subject");
+    <script>
+      // Tự động cập nhật action URL theo ngành học đã chọn
+      const form = document.querySelector('form');
+      const subjectSelect = document.getElementById('subject');
 
-    subjectSelect.addEventListener("change", function () {
-      const selectedSubject = subjectSelect.value;
-      form.action = `http://localhost:3000/register?subject=${selectedSubject}`;
-    });
-  </script>
-</body>
+      subjectSelect.addEventListener('change', function () {
+        const selectedSubject = subjectSelect.value;
+        form.action = `http://localhost:3000/register?subject=${selectedSubject}`;
+      });
+    </script>
+  </body>
 </html>

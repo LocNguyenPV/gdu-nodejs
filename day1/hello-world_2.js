@@ -1,11 +1,11 @@
-let http = require("http");
-const toUpper = require("upper-case");
+let http = require('http');
+const toUpper = require('upper-case');
 
 const server = http.createServer(function (req, res) {
   const url = req.params.language;
 
-  res.writeHead(200, { "Content-Type": "text/html" });
-  return res.end("Hello " + url);
+  res.writeHead(200, { 'Content-Type': 'text/html' });
+  return res.end('Hello ' + url);
   // if (url === '/javascript') {
   //   res.writeHead(200, {'Content-Type': 'text/html'});
   //   return res.end('Hello JavaScript');
@@ -21,5 +21,5 @@ const server = http.createServer(function (req, res) {
 });
 
 server.listen(8080, () => {
-  console.log("Access from port 8080");
+  console.log('Access from port 8080');
 });

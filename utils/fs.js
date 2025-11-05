@@ -6,6 +6,6 @@ const writeData = (path, data) => {
   } catch (error) {
     console.error('Error writing file:', error);
   }
-}
+};
 
 module.exports = { writeData };
