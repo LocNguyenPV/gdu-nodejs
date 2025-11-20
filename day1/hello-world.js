@@ -1,5 +1,4 @@
 let http = require('http');
-const toUpper = require('upper-case');
 
 const server = http.createServer(function (req, res) {
   const path = req.url;

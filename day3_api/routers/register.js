@@ -2,7 +2,7 @@ const express = require('express');
 const registerRouter = express.Router();
 const path = require('path');
 const DATA_FILE = path.join(__dirname, 'data');
-const { writeData } = require('../../utils/fs');
+const { writeData } = require('./utils/fs');
 const data = require(DATA_FILE);
 
 const validation = (req, res, next) => {
