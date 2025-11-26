@@ -63,6 +63,36 @@ const checkPassword = async (password, hash) => {
 
 => `bcrypt` sẽ sử dụng những thông tin trên để compare => không cần lưu vào database 
 
+# Architecture
+```
+├── app
+|   ├── controllers
+|   |   ├── user.js
+|   |   ├── catalog.js
+|   |   ├── order.js
+|   ├── models
+|   |   ├── user.js
+|   |   ├── product.js
+|   |   ├── order.js
+|   ├── routes
+|   |   ├── user.js
+|   |   ├── catalog.js
+|   |   ├── order.js
+|   ├── tests
+|   |   ├── user.test.js
+|   |   ├── product.test.js
+```
+
+- **Routers:** API navigation
+- **Controllers:** Handle business logic
+- **Models:** Handle data logic
+
+**Router** -> **Controller** -> **Model**
+
+
+
 # Logging
 ## Install library
 `npm install winston`
+
+
