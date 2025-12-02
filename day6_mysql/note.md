@@ -28,7 +28,7 @@
 > **Notes:** `useSSL=false` chỉ nên được sử dụng trong môi trường <u>dev/test</u>. KHÔNG SỬ DỤNG Ở **PRODUCTION**
 
 ## Kết nối từ nodeJS
-
+![work-flow](./images/wf-1.png)
 ### Install lib
 
 `npm install mysql2`
@@ -53,7 +53,7 @@ connection.connect((err) => {
 });
 ```
 
-## Usage
+### Usage
 
 ```javascript
 connection.query('SELECT * FROM users', (err, results) => {
@@ -64,3 +64,31 @@ connection.query('SELECT * FROM users', (err, results) => {
   connection.end();
 });
 ```
+
+## Cải thiện hiệu suất với connection pool
+![connectionPool](./images/connectionPool.png)
+```javascript
+const mysql = require('mysql2/promise');
+
+const db = mysql.createPool({
+  host: 'localhost',
+  user: 'root',
+  password: 'rootpassword',
+  database: 'testdb',
+});
+
+module.exports = db;
+```
+
+## Sử dụng ORM - Prisma
+
+![work-flow-2](./images/wf-2.png)
+
+### Định nghĩa
+![orm-1](./images/orm-1.png)
+
+### So sánh với raw SQL
+![orm-2](./images/orm-2.png)
+
+### Install lib
+`npm install prisma`
