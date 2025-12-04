@@ -5,13 +5,13 @@
 ### Cách 1
 
 - Mở terminal/cmd trên máy và chạy lệnh sau để tải image về máy: `docker pull mysql/mysql-server:latest`
-- Chạy container: ` docker run --name <container_name> -e MYSQL_ROOT_PASSWORD=<your_password> -p 3306:3306 -d mysql/mysql-server:latest`
+- Chạy container: ` docker run --name <container_name> -v mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=<your_password> -p 3306:3306 -d mysql/mysql-server:latest`
 - Truy cập mysql: `docker exec -it <container_name> mysql -u root -p`
 
 ### Cách 2
 
 - Mở terminal/cmd và move tới thư mục `day6_mysql` và chạy: `docker build -t <image-name> .`
-- Chạy container: `docker run -d --name <container-name> -p 3306:3306 my-mysql`
+- Chạy container: `docker run -d --name <container-name> -p 3306:3306 <image-name>`
 
 ## Kiểm tra connection:
 
@@ -21,11 +21,11 @@
 ## Kết nối từ SQL Client - DBeaver
 
 - Tạo connection với thông tin sau:
-  - URL: `jdbc:mysql://localhost:3306/testdb?useSSL=false`
+  - URL: `jdbc:mysql://localhost:3306/testdb?allowPublicKeyRetrieval=true&useSSL=false`
   - Username: `root`
   - Password: `<your-password>`
 
-> **Notes:** `useSSL=false` chỉ nên được sử dụng trong môi trường <u>dev/test</u>. KHÔNG SỬ DỤNG Ở **PRODUCTION**
+> **Notes:** `useSSL=false` và `allowPublicKeyRetrieval=true` chỉ nên được sử dụng trong môi trường <u>dev/test</u>. KHÔNG SỬ DỤNG Ở **PRODUCTION**
 
 ## Kết nối từ nodeJS
 ![work-flow](./images/wf-1.png)
@@ -79,6 +79,8 @@ const db = mysql.createPool({
 
 module.exports = db;
 ```
+## Clean architecture
+![clean architecture](./images/clean-architecture.png)
 
 ## Sử dụng ORM - Prisma
 
@@ -91,4 +93,10 @@ module.exports = db;
 ![orm-2](./images/orm-2.png)
 
 ### Install lib
-`npm install prisma`
+`npm install prisma @prisma/client @prisma/adapter-mariadb`
+
+### Check lib
+`npx prisma`
+
+### Migrate database
+`npx prisma init --datasource-provider mysql --output ../generated/prisma`
