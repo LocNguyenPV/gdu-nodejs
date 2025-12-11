@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const userRouterV1 = require('./v1/routers/user');
 const userRouterV2 = require('./v2/routers/user');
+const userRouterV3 = require('./v3/routers/user');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -24,5 +25,6 @@ app.use((err, req, res, next) => {
 
 app.use('/v1/users', userRouterV1);
 app.use('/v2/users', userRouterV2);
+app.use('/v3/users', userRouterV3);
 
 module.exports = app;

@@ -99,4 +99,20 @@ module.exports = db;
 `npx prisma`
 
 ### Migrate database
-`npx prisma init --datasource-provider mysql --output ../generated/prisma`
+`npx prisma init --datasource-provider mysql`
+
+### Init prisma client
+`npx prisma generate`
+
+### Tại sao vừa có `DATABASE_URL` ở config và adapter ở client
+Dùng để tách biệt user:
+- `prisma.config` sẽ cấu hình user có quyền chỉnh sửa migration
+- `adapter` ở client sẽ cấu hình user chỉ có quyền đọc và ghi dữ liệu (không có quyền chỉnh sửa cấu trúc)
+
+### Migration database
+- `npx prisma migrate dev --name some_change`: apply migration
+- `npx prisma migrate dev --name some_change --create-only`: chỉ tạo migration chưa apply
+
+### Khác nhau giữa `migrate dev` và `migrate deploy`
+- `migrate dev`: vừa **tạo migration** vừa **chạy migration** + hỗ trợ detect drift, nên chỉ dùng ở local/dev.
+- `migrate deploy`: chỉ deploy migration đã có sẵn, không detect drift, cũng không reset database

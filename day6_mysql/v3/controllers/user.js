@@ -26,6 +26,7 @@ const authen = async (req, res, next) => {
 };
 
 const register = catchAsync(async (req, res) => {
+      console.log('Register user:', req.body);
   const result = await User.create(req.body);
   res.status(201).json({ success: true, message: result });
 });
