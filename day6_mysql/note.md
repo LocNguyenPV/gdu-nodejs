@@ -83,7 +83,6 @@ module.exports = db;
 ![clean architecture](./images/clean-architecture.png)
 
 ## Sử dụng ORM - Prisma
-
 ![work-flow-2](./images/wf-2.png)
 
 ### Định nghĩa
@@ -100,6 +99,9 @@ module.exports = db;
 
 ### Migrate database
 `npx prisma init --datasource-provider mysql`
+
+### Pull database
+`npx prisma db pull`
 
 ### Init prisma client
 `npx prisma generate`
